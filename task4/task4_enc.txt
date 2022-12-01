@@ -1,0 +1,19 @@
+#Create 3 files of 5, 10, 16 bytes
+echo -5 "12345" > f1.txt
+echo -10 "1234567890" > f2.txt
+echo -16 "0123456789abcefg" > f3.txt
+
+#Encrypts said files
+openssl enc -aes-128-cbc -e -in f1.txt -out f1_enc.txt
+openssl enc -aes-128-cbc -e -in f2.txt -out f2_enc.txt
+openssl enc -aes-128-cbc -e -in f3.txt -out f3_enc.txt
+
+#Decrypts files, includes padding
+openssl enc -aes-128-cbc -d -nopad -in f1.txt -out f1_enc.txt
+openssl enc -aes-128-cbc -d -nopad -in f2.txt -out f2_enc.txt
+openssl enc -aes-128-cbc -d -nopad -in f3.txt -out f3_enc.txt
+
+#Displays files
+hexdump -C f1.txt
+hexdump -C f2.txt
+hexdump -C f3.txt
