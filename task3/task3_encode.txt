@@ -1,0 +1,14 @@
+#Encode image with ECB and CBC
+openssl enc -aes-256-ecb -in p1.bmp -out c1.bmp
+openssl end -aes-256-ecb -in p1.bmp -out c2.bmp
+
+#Get the Header and Body ECB
+head -c 54 p1.bmp > header
+tail -c +55 c1.bmp > body
+cat header body > new1.bmp
+
+#Get the Header and Body CBC
+head -c 54 p1.bmp > header
+tail -c +55 c2.bmp > body
+cat header body > new2.bmp
+
